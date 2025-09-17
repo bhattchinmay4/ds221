@@ -41,28 +41,28 @@ void question1(string input_file, string output_file)
  * @brief Do not modify this code.
  *
  */
-void question2(string input_file, string output_file)
-{
+// void question2(string input_file, string output_file)
+// {
 
-    vector<int> preorder, inorder;
-    vector<vector<int>> leaf_parcels, queries;
-    // read from input file
-    question2_reader(input_file, preorder, inorder, leaf_parcels, queries);
+//     vector<int> preorder, inorder;
+//     vector<vector<int>> leaf_parcels, queries;
+//     // read from input file
+//     question2_reader(input_file, preorder, inorder, leaf_parcels, queries);
 
-    auto start = high_resolution_clock::now();
+//     auto start = high_resolution_clock::now();
 
-    vector<int> output =  question_two(preorder, inorder, leaf_parcels, queries);
+//     vector<int> output =  question_two(preorder, inorder, leaf_parcels, queries);
 
-    auto stop = high_resolution_clock::now();
-    auto duration = duration_cast<microseconds>(stop - start);
-    auto computeDuration = duration.count();
-    std::cout << "Time taken by function: " << duration.count() << " microseconds" << endl;
-    std::cout << "Total time taken: " << computeDuration << " microseconds" << endl;
+//     auto stop = high_resolution_clock::now();
+//     auto duration = duration_cast<microseconds>(stop - start);
+//     auto computeDuration = duration.count();
+//     std::cout << "Time taken by function: " << duration.count() << " microseconds" << endl;
+//     std::cout << "Total time taken: " << computeDuration << " microseconds" << endl;
    
-    // write output to file
-    question2_writer(output_file, output);
+//     // write output to file
+//     question2_writer(output_file, output);
 
-}
+// }
 
 
 /**
@@ -70,29 +70,29 @@ void question2(string input_file, string output_file)
  *
  */
 
-void question3(string input_file, string output_file) 
-{
+// void question3(string input_file, string output_file) 
+// {
 
-    vector<vector<int>> edges;
-    vector<int> metro_cities;  
-    // read from input file
-    question3_reader(input_file, edges, metro_cities);
+//     vector<vector<int>> edges;
+//     vector<int> metro_cities;  
+//     // read from input file
+//     question3_reader(input_file, edges, metro_cities);
 
 
-    auto start = high_resolution_clock::now();
+//     auto start = high_resolution_clock::now();
 
-    int output =  question_three(edges, metro_cities);
+//     int output =  question_three(edges, metro_cities);
 
-    auto stop = high_resolution_clock::now();
-    auto duration = duration_cast<microseconds>(stop - start);
-    auto computeDuration = duration.count();
-    std::cout << "Time taken by function: " << duration.count() << " microseconds" << endl;
-    std::cout << "Total time taken: " << computeDuration << " microseconds" << endl;
+//     auto stop = high_resolution_clock::now();
+//     auto duration = duration_cast<microseconds>(stop - start);
+//     auto computeDuration = duration.count();
+//     std::cout << "Time taken by function: " << duration.count() << " microseconds" << endl;
+//     std::cout << "Total time taken: " << computeDuration << " microseconds" << endl;
 
-    // write output ot file
-    question3_writer(output_file, output);
+//     // write output ot file
+//     question3_writer(output_file, output);
 
-}
+// }
 
 
 //////////////////////////////////////////////////////////////////////////////////
@@ -106,20 +106,26 @@ void question3(string input_file, string output_file)
  * @return int
  */
 
-int main(int argc, char **argv)
+
+int main(int argc, char **argv) 
 {
     string question1_input_file = argv[1];
     string question1_output_file = argv[2];
-    string question2_input_file = argv[3];
-    string question2_output_file = argv[4];
-    string question3_input_file = argv[5];
-    string question3_output_file = argv[6];
+    // string question2_input_file = argv[3];
+    // string question2_output_file = argv[4];
+    // string question3_input_file = argv[5];
+    // string question3_output_file = argv[6];
 
     question1(question1_input_file, question1_output_file);
 
-    question2(question2_input_file, question2_output_file);
+    // question2(question2_input_file, question2_output_file);
 
-    question3(question3_input_file, question3_output_file);
+    // question3(question3_input_file, question3_output_file);
 
     return 0;
 }
+
+// how to run the code
+// g++ -std=c++17 main.cpp -o main
+// ./main question1_input.csv question1_output.csv question2_input.txt question2_output.txt question3_input.txt question3_output.txt
+//////////////////////////////////////////////////////////////////////////////////
