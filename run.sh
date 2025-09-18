@@ -12,8 +12,15 @@
 
 # Your commands to run your code should be here
 
+# write the bash script to compile and run the code gen_inp.cpp
+g++ sample_tests/question1/gen_inp.cpp -o gen_inp
+# run the code 
+./gen_inp
+
+
 
 # make a loop to run main.cpp with n different input and output files
+#!/bin/bash
 
 g++ main.cpp -o main 
 # ./main "./sample_tests/question1/test_case_1.txt" "output_1.txt"
@@ -23,4 +30,21 @@ do
   echo "output_$i.txt"
   ./main "./sample_tests/question1/test_case_$i.txt" "./sample_tests/question1/output_$i.txt"
 done
+
+# also i want to generate a csv file with the time taken for each input file
+# first calculate size of each input file from the number of lines in the file
+#  main function gives the time taken in microseconds, save it in a csv file with two columns: input size, time taken
+# input is given like this as output of main function: Total time taken: 21 microseconds in the terminal
+# how to capture this output in a variable in bash from terminal
+# time_taken=$(./main "./sample_tests/question1/test_case_1.txt" "output_1.txt" | grep -oP 'Total time taken: \K[0-9]+')
+# echo $time_taken
+echo "Input Size,Time Taken (microseconds)" > time_taken.csv
+for i in $(seq 1 $1)
+do
+  input_size= $(wc -l < "./sample_tests/question1/test_case_$i.txt")
+  input_size= input_size-1 # subtract 1 for the first line
+  time_taken= $(./main "./sample_tests/question1/test_case_$i.txt" "./sample_tests/question1/output_$i.txt" | grep -oP 'Total time taken: \K[0-9]+')
+  echo "$input_size,$time_taken" >> time_taken.csv
+done
+
 

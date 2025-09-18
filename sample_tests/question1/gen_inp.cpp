@@ -47,21 +47,27 @@ void generate_test_case(const string& filename, int n, int max_id, int max_weigh
 
 int main() {
     // Test case parameters
-    vector<int> sizes = {10, 100,1000,10000,100000,1000000,10000000}; // You can add larger sizes for stress testing
+    // give 100 sizes
+    vector<int> sizes = {10,100,1000}; // You can add larger sizes for stress testing
+    for (int i = 10000; i < 1010000; i=i+10000) {
+        sizes.push_back(i); // from 100k to 10M
+    }
     int max_id = 1000000;
     int max_weight = 1000000;
 
     for (size_t i = 0; i < sizes.size(); ++i) {
-        string filename = "test_case_" + to_string(i+1) + ".txt";
+        //change filename to store in sample_tests/question1
+
+        string filename = "./sample_tests/question1/test_case_" + to_string(i+1) + ".txt";
 
         int duplicate_count;
 
         // generate some edge cases
-        if (i == 0) duplicate_count = sizes[i]/2 + 1; // 50% duplicates for smallest
-        if (i == sizes.size() - 1) duplicate_count = 0; // no duplicates for largest
+        // if (i == 0) duplicate_count = sizes[i]/2 + 1; // 50% duplicates for smallest
+        // if (i == sizes.size() - 1) duplicate_count = 0; // no duplicates for largest
 
-        // else randomly generate from 0% to 20%
-        else duplicate_count = rand() % (sizes[i]/5 + 1);
+        // else randomly generate from 0% to 50%
+        duplicate_count = rand() % (sizes[i]/2 + 1);
 
         generate_test_case(filename, sizes[i], max_id, max_weight, duplicate_count);
         cout << "Generated " << filename << " with " << sizes[i] << " parcels.\n";
